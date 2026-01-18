@@ -34,6 +34,11 @@ public class NoteDAOImpl implements INoteDAO {
     }
 
     @Override
+    public boolean doesNoteExist(int id) {
+        return list.stream().anyMatch(note -> note.getId() == id);
+    }
+
+    @Override
     public Optional<Note> findById(int id) {
         return list.stream()
                 .filter(note -> note.getId() == id)
